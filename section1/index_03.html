@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        class MyComponet extends React.Component {
+          state = {
+             counter: 0,
+             message: ""
+          }
+
+          handleClick =  () => {
+            this.setState( prevState => ({
+                counter: prevState.counter + 1 
+              }));
+          } 
+           handleChange = (event) => {
+               this.setState ({
+                   message : event.target.value
+               })
+
+           }
+          
+          render() {
+            return (
+              <div>
+               <h2>Contador: {this.state.counter}</h2>
+               <button onClick = {this.handleClick}>
+                  Contar
+               </button>
+               <hr/>
+               <div>
+                <p>{this.state.message}</p>
+                <input type="text" onChange= {this.handleChange} value={this.state.message}/>
+                <br /> <br />
+                <input type="text" onChange= {this.handleChange} value={this.state.message}/>
+               </div>
+              </div>
+              );
+          };  
+        }
+
+        ReactDOM.render(
+            <MyComponet/>,
+            document.getElementById("root")
+        )
+    </script>
+  </body>
+</html>

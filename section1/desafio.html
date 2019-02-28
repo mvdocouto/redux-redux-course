@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      
+      const Message = props => {
+        return <p>Clique no botão para incrementar o contador</p>;
+      };
+
+      class Counter extends React.Component {
+        state = {
+          counter: 0
+        }
+
+        handleClick =  () => {
+          this.setState( prevState => ({
+              counter: prevState.counter + 5
+            }));
+        } 
+        render() {
+          return (
+            <div>
+              <Message />
+              <p>Contador: {this.state.counter}</p>
+              <button onClick = {this.handleClick}>
+                  Contar
+               </button>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <Counter/>,
+        document.getElementById("root")
+      )
+    </script>
+  </body>
+</html>

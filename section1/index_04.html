@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        class MyComponet extends React.Component {
+          state = {
+             counter: 0,
+             name: "",
+             lastName: ""
+          }
+
+          handleClick =  () => {
+            this.setState( prevState => ({
+                counter: prevState.counter + 1 
+              }));
+          } 
+           handleChange = (key, value) => {
+               this.setState ({
+                   [key] : value
+               })
+
+           }
+          
+          render() {
+            const { name, lastName, counter } = this.state;
+            return (
+              <div>
+               <h2>Contador: {counter}</h2>
+               <button onClick = {this.handleClick}>
+                  Contar
+               </button>
+               <hr/>
+               <div>
+                <p>{lastName}{name && lastName && ', '}{name}</p>
+                <input type="text" onChange= { (event) => {
+                    this.handleChange(
+                      "name",
+                      event.target.value
+                    ); 
+                }} value={name}/>
+                <br /> <br />
+                <input type="text" onChange= { (event) => {
+                    this.handleChange(
+                      "lastName",
+                      event.target.value
+                    )
+                  }} value={lastName}/>
+               </div>
+               <br />
+               <button onClick={ () => {
+                 this.setState({
+                   name: "Marcus",
+                   lastName: "Couto"
+                 });   
+               }}> Nome do aluno</button>
+              </div>
+              );
+          };  
+        }
+
+        ReactDOM.render(
+            <MyComponet/>,
+            document.getElementById("root")
+        )
+    </script>
+  </body>
+</html>
