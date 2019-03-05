@@ -1,5 +1,10 @@
-node_modules
+node_modules/
+dist/
+cache/
 # OSX hidden files
 .DS_Store
 # vscode files
-*/.vscode/
+.cache/
+package-lock.json
+.vscode/
+

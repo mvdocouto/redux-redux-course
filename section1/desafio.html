@@ -36,10 +36,10 @@
         render() {
           return (
             <div>
-              <Message />
               <p>Contador: {this.state.counter}</p>
+              <Message />
               <button onClick = {this.handleClick}>
-                  Contar
+                  Acrescentar + 5 
                </button>
             </div>
           );
@@ -47,7 +47,7 @@
       }
 
       ReactDOM.render(
-        <Counter/>,
+        <Counter />,
         document.getElementById("root")
       )
     </script>
