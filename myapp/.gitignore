@@ -1,2 +1,5 @@
-../.DS_Store
-../.vscode/
+node_modules
+# OSX hidden files
+.DS_Store
+# vscode files
+*/.vscode/
