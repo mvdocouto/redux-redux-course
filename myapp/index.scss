@@ -33,10 +33,26 @@ body {
 }
 
 .note {
+  display: flex;
+  align-items: center;
   background-color: #fff;
   padding: 10px 12px;
   border-radius: 5px;
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 16spx;
+
+  &__text {
+    flex: 1;
+  }
+
+  &__button {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+
+    &--hidden {
+      visibility: hidden;
+    }
+  }
 }
