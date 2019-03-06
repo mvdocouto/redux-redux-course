@@ -1,12 +1,8 @@
 node_modules/
 .vscode/
-
-dist/
-cache/
-# OSX hidden files
-.DS_Store
-# vscode files
 .cache/
+dist/
+.DS_Store
 package-lock.json
-.vscode/
+
 
