@@ -7,7 +7,11 @@ import "./index.scss";
 
 class App extends React.Component {
   state = {
-    notes: []
+    notes: [
+      { id: uuid(), text: "Estudar React" },
+      { id: uuid(), text: "Estudar Redux" },
+      { id: uuid(), text: "Estudar Saga" }
+    ]
   };
 
   handleAddNote = text => {
@@ -30,11 +34,30 @@ class App extends React.Component {
     });
   };
 
+  handleDelete = id => {
+    this.setState(prevState => {
+      const newNotes = prevState.notes.slice();
+      const index = newNotes.findIndex(note => note.id === id);
+      newNotes.splice(index, 1);
+
+      return {
+        notes: newNotes
+      };
+    });
+  };
+
+  handleEdit = () => {};
+
   render() {
     return (
       <div className="container">
         <NewNote onAddNote={this.handleAddNote} />
-        <NoteList notes={this.state.notes} onMove={this.handleMove} />
+        <NoteList
+          notes={this.state.notes}
+          onMove={this.handleMove}
+          onDelete={this.handleDelete}
+          onEdit={this.handleEdit}
+        />
       </div>
     );
   }
@@ -73,12 +96,29 @@ class NewNote extends React.Component {
   }
 }
 
-const NoteList = ({ notes, onMove }) => {
+const NoteList = ({ notes, onMove, onDelete, onEdit }) => {
   return (
     <div className="note-list">
       {notes.map((note, index) => (
         <div key={note.id} className="note">
           <span className="note__text">{note.text}</span>
+          <button
+            className={"note__button"}
+            onClick={() => {
+              onEdit(note.id);
+            }}
+          >
+            <i className="material-icons">edit</i>
+          </button>
+          <button
+            className={"note__button"}
+            onClick={() => {
+              onDelete(note.id);
+            }}
+          >
+            <i className="material-icons">delete</i>
+          </button>
+
           <button
             className={classNames("note__button", {
               "note__button--hidden": index === 0
