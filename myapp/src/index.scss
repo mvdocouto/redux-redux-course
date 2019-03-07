@@ -1,13 +1,33 @@
+$app-padding: 20px;
+$app-max-width: 600px;
+
 body {
   background-color: #03a9f4;
   margin: 0;
   padding: 0;
+  font-family: "Thasadith", sans-serif;
 }
 
 .container {
   margin: 0 auto;
-  padding: 20px;
-  max-width: 600px;
+  margin-top: 60px;
+  padding: $app-padding;
+  max-width: $app-max-width;
+}
+
+.app-bar {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  &__container {
+    margin: 0 auto;
+    padding: $app-padding;
+    max-width: $app-max-width;
+    font-size: 22px;
+  }
 }
 
 .new-note {
@@ -21,6 +41,7 @@ body {
     font-size: 16px;
     padding: 0px 10px;
     border: none;
+    font-family: "Thasadith", sans-serif;
 
     &:focus {
       outline: none;
